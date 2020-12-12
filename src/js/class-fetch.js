@@ -36,12 +36,16 @@ export default class Weather {
   search() {
     const { inputRef, btnRef } = this.refs;
 
-    btnRef.addEventListener("click", () => this.getFetch(inputRef.value));
+    btnRef.addEventListener("click", () => {
+      this.getFetch(inputRef.value);
+      inputRef.value = "";
+    });
 
     inputRef.addEventListener("keyup", (e) => {
       if (e.key === "Enter") {
         // cityName = e.target.value;
         this.getFetch(inputRef.value);
+        inputRef.value = "";
       }
     });
   }
